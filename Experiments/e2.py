@@ -4,5 +4,5 @@ todos = []
 
 while True:
     todo = input(prompt)
-    print(todo.capitalize())
+    print(todo.title())
     todos.append(todo)
