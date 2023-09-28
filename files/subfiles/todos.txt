@@ -1,4 +1,6 @@
 Mop the floor
-Clean the dust
-shower
+Clean House Dust
 clean
+School Stuff
+fix the computer
+Learn Python
