@@ -4,3 +4,5 @@ clean
 School Stuff
 fix the computer
 Learn Python
+Learn SharePoint
+add a new member

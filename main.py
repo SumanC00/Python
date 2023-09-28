@@ -4,7 +4,7 @@ while True:
     user_action = user_action.strip()
 
 
-    if 'add' in user_action:
+    if user_action.startswith("add"):
         todo = user_action[4:] + "\n"
 
         #todo = input("Enter a todo: ") + "\n"
@@ -25,7 +25,7 @@ while True:
         with open("files/subfiles/todos.txt", "w") as file:
             file.writelines(todos)
 
-    elif 'show' in user_action:
+    elif user_action.startswith("show"):
         #file = open("files/subfiles/todos.txt", "r")
         #todos = file.readlines()
         #file.close()
@@ -50,36 +50,44 @@ while True:
 
         #print(len(todos)) length function to print the length of something
 
-    elif 'edit' in user_action:
-        number = int(user_action[5:]) #int(input("Number of the todo to edit: "))
-        print(number)
-        number = number - 1
+    elif user_action.startswith("edit"):
+        try:
+            number = int(user_action[5:]) #int(input("Number of the todo to edit: "))
+            print(number)
+            number = number - 1
 
-        with open("files/subfiles/todos.txt", "r") as file:
-            todos = file.readlines()
+            with open("files/subfiles/todos.txt", "r") as file:
+                todos = file.readlines()
 
-        new_todo = input("Enter new todo: ")
-        todos[number] = new_todo + "\n"
+            new_todo = input("Enter new todo: ")
+            todos[number] = new_todo + "\n"
 
-        with open("files/subfiles/todos.txt", "w") as file:
-            file.writelines(todos)
+            with open("files/subfiles/todos.txt", "w") as file:
+                file.writelines(todos)
+        except ValueError:
+            print("Try to input an integer")
+            continue
 
-    elif 'complete' in user_action:
-        number = int(user_action[9:]) #int(input("Number of the todo to complete: "))
+    elif user_action.startswith("complete"):
+        try:
+            number = int(user_action[9:]) #int(input("Number of the todo to complete: "))
 
-        with open("files/subfiles/todos.txt", "r") as file:
-            todos = file.readlines()
-        index = number - 1
-        todo_to_remove = todos[index].strip("\n")
-        todos.pop(index)
+            with open("files/subfiles/todos.txt", "r") as file:
+                todos = file.readlines()
+            index = number - 1
+            todo_to_remove = todos[index].strip("\n")
+            todos.pop(index)
 
-        with open("files/subfiles/todos.txt", "w") as file:
-            file.writelines(todos)
+            with open("files/subfiles/todos.txt", "w") as file:
+                file.writelines(todos)
 
-        message = f"Todo {todo_to_remove} was remove from the list."
-        print(message)
+            message = f"Todo {todo_to_remove} was remove from the list."
+            print(message)
+        except IndexError:
+            print("Your input is out of the index.")
+            continue
 
-    elif 'exit' in user_action:
+    elif user_action.startswith("exit"):
         break
 
     else:
