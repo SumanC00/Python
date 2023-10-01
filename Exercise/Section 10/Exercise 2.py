@@ -1,7 +1,8 @@
-try:
-    total_value = float(input("Enter total value"))
-    value = float(input("Enter Value"))
-    percentage = value / total_value * 100
-    print(f"That is {percentage}%")
-except ZeroDivisionError:
-    exit(f"Your total value cannot be zero.")
+password = input("Enter a password: ")
+
+if len(password) > 7:
+    print("Great password there")
+elif len(password) == 7:
+    print("Password is OK, but not too strong")
+else:
+    print("Your password is weak")

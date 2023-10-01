@@ -1,1 +1,0 @@
-day_temperatures = {"morning": 12.3, "noon": 12.5, "evening": 12.6 }
